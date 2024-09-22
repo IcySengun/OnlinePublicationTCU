@@ -1,0 +1,52 @@
+<?php 
+session_start();
+include("connect.php");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="homestyle.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <header>
+        <h1>TCU Online Publication Site</h1>
+        
+        <nav>
+            <ul>
+                <li><a href="homepage.php">Home</a></li>
+                <li><a href="article.php">Article</a></li>
+                <li><a href="AboutUs.php">About Us</a></li>
+                <li><a href="ContactUs.php">Contact Us</a></li>
+            </ul>
+        </nav>
+
+        <div class="welcome-message">
+            <p>Welcome 
+            <?php
+            if(isset($_SESSION['email'])){
+                $email = $_SESSION['email'];
+                $query = mysqli_query($conn, "SELECT users.* FROM users WHERE users.email='$email'");
+                while($row = mysqli_fetch_array($query)){
+                    echo $row['firstName'].' '.$row['lastName'];
+                } 
+            }
+            ?>
+            </p>
+            <a href="logout.php">Logout</a>
+        </div>
+    </header>
+
+    <main>
+        <h2>Hello, World!</h2>
+        <p>This is a simple HTML page.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Taguig City University</p>
+    </footer>
+</body>
+</html>

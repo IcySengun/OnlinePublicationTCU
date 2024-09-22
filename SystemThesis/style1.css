@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background-color: #ffb3b3; /* Softer light red */
+    background: linear-gradient(135deg, #ffcccb, #ff9999); /* Enhanced gradient */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    background: #fff;
+    width: 450px;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: scale(1.02); /* Slightly enlarges the form on hover */
+}
+
+.form-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 1.5rem;
+    color: #CC0000; /* Softer scarlet red */
+    letter-spacing: 1.5px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-group i {
+    position: absolute;
+    color: #CC0000; /* Softer scarlet red */
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%); /* Center icon vertically */
+    pointer-events: none; /* Prevent the icon from blocking interactions */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.input-group input {
+    color: inherit;
+    width: 100%;
+    background-color: #f7f7f7; /* Light grey background */
+    border: none;
+    border-bottom: 2px solid #cc0000; /* Softer scarlet red border */
+    padding: 12px 15px 12px 40px; /* Adjust padding for icon */
+    font-size: 16px;
+    border-radius: 5px; /* Slight rounding */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-group input:focus {
+    border-color: #990000; /* Darker soft red */
+    box-shadow: 0 0 8px rgba(204, 0, 0, 0.2); /* Soft glow on focus */
+    outline: none;
+}
+
+.input-group input:hover~i,
+.input-group input:focus~i {
+    color: #990000; /* Darker soft red */
+    transform: scale(1.1); /* Slightly enlarge icon on focus/hover */
+}
+
+label {
+    color: #757575; /* Original label color */
+    position: absolute;
+    left: 40px; /* Adjust position to align with input field */
+    top: -10px; /* Move label above the input */
+    font-size: 0.75rem; /* Smaller font size */
+    background: #fff; /* Background to prevent overlay issues */
+    padding: 0 2px; /* Small padding for better readability */
+    z-index: 1; /* Ensure label is on top */
+    transition: 0.3s ease all;
+}
+
+.input-group input:focus~label,
+.input-group input:not(:placeholder-shown)~label {
+    color: #CC0000; /* Softer scarlet red when focused */
+}
+
+/* Ensure labels are consistently positioned */
+.input-group {
+    position: relative;
+    padding-top: 1.5rem; /* Add space for label */
+}
+
+.input-group input {
+    padding-top: 1.5rem; /* Adjust padding to avoid overlap with label */
+}
+
+.recover {
+    text-align: right;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.recover a {
+    text-decoration: none;
+    color: #cc0000; /* Softer scarlet red */
+    transition: color 0.3s ease;
+}
+
+.recover a:hover {
+    color: #b30000; /* Darker soft red */
+    text-decoration: underline;
+}
+
+.btn {
+    font-size: 1.1rem;
+    padding: 12px 0;
+    border-radius: 8px;
+    border: none;
+    width: 100%;
+    background: #CC0000; /* Softer scarlet red */
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(204, 0, 0, 0.4); /* Button shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+    background: #990000; /* Darker soft red */
+    transform: translateY(-3px); /* Lift button slightly on hover */
+}
+
+.or {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    text-align: center;
+    color: #CC0000; /* Softer scarlet red */
+}
+
+.icons {
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.icons i {
+    color: #CC0000; /* Softer scarlet red */
+    padding: 0.8rem 1.5rem;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: 2px solid #ffb3b3; /* Softer light red border */
+    margin: 0 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.icons i:hover {
+    background: #990000; /* Darker soft red */
+    color: white;
+    transform: scale(1.1); /* Slightly enlarge icon on hover */
+}
+
+.links {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: #CC0000; /* Softer scarlet red */
+}
+
+button {
+    color: #CC0000; /* Softer scarlet red */
+    border: none;
+    background-color: transparent;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+button:hover {
+    color: #990000; /* Darker soft red */
+    text-decoration: underline;
+}

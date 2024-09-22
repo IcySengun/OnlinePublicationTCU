@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taguig City University Online</title>
+    <style>
+        /* Universal Styles */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header and Footer Styles */
+        header, footer {
+            background-color: rgba(255, 71, 76, 1); /* Fallback color with transparency */
+            color: white;
+            width: 100%; /* Full-width header and footer */
+            padding: 10px 20px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            height: 80px;
+            flex-shrink: 0;
+        }
+
+        header h1 {
+            margin: 0;
+            flex: 1;
+        }
+
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+
+        header ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        header li {
+            margin: 0 10px;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        header a:hover {
+            text-decoration: underline;
+        }
+
+        header input[type="text"] {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            margin-left: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            flex-shrink: 0;
+        }
+
+        /* Main Content Styles */
+        .container {
+            width: calc(100% - 2in); /* Ensures a 1-inch margin on both sides */
+            margin: 0 auto;
+        }
+
+        main {
+            flex: 1;
+            padding: 2rem 0;
+        }
+
+        .post-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: #f0f0f0;
+            border-radius: 8px;
+        }
+
+        .post-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .post-section form {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .post-section input[type="text"],
+        .post-section textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .post-section input[type="file"] {
+            padding: 0.75rem;
+        }
+
+        .post-section button {
+            padding: 0.75rem;
+            background: #e60000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .post-section button:hover {
+            background: #cc0000;
+        }
+
+        .user-posts {
+            margin-top: 2rem;
+        }
+
+        .articles-grid, .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        article {
+            background: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        article:hover {
+            transform: scale(1.02);
+        }
+
+        article img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        article h3 {
+            color: #333;
+            margin: 1rem 0 0.5rem;
+        }
+
+        article p {
+            color: #555;
+        }
+
+        /* Upcoming Events */
+        .upcoming-events ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .upcoming-events li {
+            background: #f9f9f9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .upcoming-events h4 {
+            margin-bottom: 0.5rem;
+            color: #e60000;
+        }
+
+        /* Footer Enhancements */
+        footer .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        footer h3 {
+            margin-bottom: 1rem;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer .contact-info p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Taguig City University Online</h1>
+            <nav>
+                <ul>
+                    <li><a href="homepage.php">Home</a></li>
+                    <li><a href="article.php">Articles</a></li>
+                    <li><a href="AboutUs.php">About Us</a></li>
+                    <li><a href="ContactUs.php">Contact</a></li>
+                </ul>
+                <input type="text" placeholder="Search...">
+            </nav>
+        </div>
+        <main class="container">
+        <div style="text-align:right; padding: 15%;">
+            <p style="font-size:15px; font-weight:bold;">
+            <?php
+            if(isset($_SESSION['email'])){
+            $email=$_SESSION['email'];
+            $query=mysqli_query($conn, "SELECT users.* FROM users WHERE users.email='$email'");
+            while($row=mysqli_fetch_array($query)){
+                echo $row['firstName'].' '.$row['lastName'];
+            } 
+        }
+            ?>
+            </p>
+            <a href="logout.php">Logout</a>
+        </div>
+
+    </header>
+
+    <main class="container">
+        <!-- New Posting Section -->
+        <section class="post-section">
+            <h2>Publish Your Work</h2>
+            <form id="postForm">
+                <input type="text" id="postTitle" placeholder="Title" required>
+                <textarea id="postDescription" placeholder="Description" rows="5" required></textarea>
+                <input type="file" id="postImage" accept="image/*" required>
+                <button type="submit">Post</button>
+            </form>
+            <div class="user-posts">
+                <h2>Recent Posts</h2>
+                <div class="articles-grid" id="postsGrid">
+                    <!-- User posts will be appended here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-articles">
+            <h2>Featured Articles</h2>
+            <div class="articles-grid">
+                <article>
+                    <img src="image1.jpg" alt="Article Image">
+                    <h3>Discovering the Beauty of Taguig City University</h3>
+                    <p>Explore the scenic views and historic buildings of our beloved university.</p>
+                </article>
+                <article>
+                    <img src="image2.jpg" alt="Article Image">
+                    <h3>Student Life: Engaging Activities and Events</h3>
+                    <p>Discover the vibrant campus life with exciting activities and events.</p>
+                </article>
+                <article>
+                    <img src="image3.jpg" alt="Article Image">
+                    <h3>Academic Excellence at Taguig City University</h3>
+                    <p>Learn more about the academic programs that lead the way in education.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="latest-news">
+            <h2>Latest News</h2>
+            <div class="news-grid">
+                <article>
+                    <img src="image4.jpg" alt="News Image">
+                    <h3>Inauguration of the New Science Building</h3>
+                    <p>Join us in celebrating the grand opening of our state-of-the-art science building.</p>
+                </article>
+                <article>
+                    <img src="image5.jpg" alt="News Image">
+                    <h3>Community Outreach Programs</h3>
+                    <p>Learn about initiatives to give back to the community and how you can get involved.</p>
+                </article>
+                <article>
+                    <img src="image6.jpg" alt="News Image">
+                    <h3>Annual Recognition Ceremony</h3>
+                    <p>Celebrating the achievements of our outstanding students and faculty members.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="upcoming-events">
+            <h2>Upcoming Events</h2>
+            <ul>
+                <li>
+                    <h4>University Fair</h4>
+                    <p>Date: 15th October 2023</p>
+                    <p>Join us for a fun-filled day of activities, food stalls, and performances.</p>
+                </li>
+                <li>
+                    <h4>Guest Lecture Series</h4>
+                    <p>Date: 22nd October 2023</p>
+                    <p>Hear from industry experts as they share insights and knowledge.</p>
+                </li>
+                <li>
+                    <h4>Alumni Homecoming</h4>
+                    <p>Date: 29th October 2023</p>
+                    <p>Reconnect with fellow alumni and faculty at our annual Alumni Homecoming event.</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="homepage.php">Home</a></li>
+                    <li><a href="article.php">Articles</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="social-media">
+                <h3>Follow Us</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="contact-info">
+                <h3>Contact Us</h3>
+                <p>Taguig City University</p>
+                <p>Taguig, PH</p>
+                <p>Email: info@taguigcityuniversity.edu.ph</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const postForm = document.getElementById('postForm');
+            const postsGrid = document.getElementById('postsGrid');
+
+            // Load posts from localStorage
+            function loadPosts() {
+                const posts = JSON.parse(localStorage.getItem('posts')) || [];
+                posts.forEach(post => {
+                    const postElement = document.createElement('article');
+                    postElement.innerHTML = `
+                        <img src="${post.imageUrl}" alt="${post.title}">
+                        <h3>${post.title}</h3>
+                        <p>${post.description}</p>
+                    `;
+                    postsGrid.appendChild(postElement);
+                });
+            }
+
+            // Save post to localStorage
+            function savePost(title, description, imageUrl) {
+                const posts = JSON.parse(localStorage.getItem('posts')) || [];
+                posts.push({ title, description, imageUrl });
+                localStorage.setItem('posts', JSON.stringify(posts));
+            }
+
+            postForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Get form values
+                const title = document.getElementById('postTitle').value;
+                const description = document.getElementById('postDescription').value;
+                const imageInput = document.getElementById('postImage');
+                const imageFile = imageInput.files[0];
+                const reader = new FileReader();
+
+                reader.onload = function (event) {
+                    const imageUrl = event.target.result;
+
+                    // Save post to localStorage
+                    savePost(title, description, imageUrl);
+
+                    // Create new post element
+                    const postElement = document.createElement('article');
+                    postElement.innerHTML = `
+                        <img src="${imageUrl}" alt="${title}">
+                        <h3>${title}</h3>
+                        <p>${description}</p>
+                    `;
+
+                    // Append the new post to the grid
+                    postsGrid.appendChild(postElement);
+
+                    // Reset the form
+                    postForm.reset();
+                };
+
+                if (imageFile) {
+                    reader.readAsDataURL(imageFile);
+                }
+            });
+
+            // Load posts on page load
+            loadPosts();
+        });
+    </script>
+</body>
+
+</html>
+aricle.txt
+Displaying aricle.txt.
